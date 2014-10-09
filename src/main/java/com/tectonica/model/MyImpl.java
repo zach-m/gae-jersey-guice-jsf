@@ -1,18 +1,26 @@
 package com.tectonica.model;
 
+import java.util.logging.Logger;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
 public class MyImpl implements MyIntf
 {
-	public MyImpl()
+	@Inject
+	private Logger log;
+
+	@PostConstruct
+	public void postConstruct()
 	{
-		System.out.println("Created MyImpl()");
+		log.info("Created MyImpl()");
 	}
 
 	@Override
 	public void foo()
 	{
-		System.out.println("MyImpl.foo()");
+		log.info("MyImpl.foo()");
 	}
 }
