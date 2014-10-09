@@ -5,28 +5,30 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
+import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 
 import com.google.apphosting.api.ApiProxy;
 import com.google.apphosting.api.ApiProxy.Environment;
-import com.tectonica.model.MyImpl;
+import com.google.inject.servlet.RequestScoped;
 import com.tectonica.model.MyIntf;
 
 @Path("/info")
+@RequestScoped
 public class InfoAPI
 {
 	private static final String TITLE = "Information Page";
 	private static final String H1_TITLE = "Information Page";
 
-	@Context
-	private HttpServletRequest request;
-	
-	private MyIntf myImpl = MyImpl.getInstance();
+	@Inject
+	private HttpServletRequest request; // the reason for the @RequestScoped
+
+	@Inject
+	private MyIntf myImpl;
 
 	/**
 	 * Returns environment information (headers, cookies, JVM and OS variables)

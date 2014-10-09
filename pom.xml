@@ -32,6 +32,11 @@
 			<artifactId>jersey-json</artifactId>
 			<version>${version.jersey}</version>
 		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey.contribs</groupId>
+			<artifactId>jersey-guice</artifactId>
+			<version>${version.jersey}</version>
+		</dependency>
 
 		<!-- From GAE: Compile/runtime dependencies -->
 		<dependency>

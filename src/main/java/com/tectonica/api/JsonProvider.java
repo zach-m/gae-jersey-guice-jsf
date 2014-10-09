@@ -1,5 +1,6 @@
 package com.tectonica.api;
 
+import javax.inject.Singleton;
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
 
@@ -15,6 +16,7 @@ import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
  * @author Zach Melamed
  */
 @Provider
+@Singleton
 public class JsonProvider implements ContextResolver<ObjectMapper>
 {
 	final ObjectMapper json;

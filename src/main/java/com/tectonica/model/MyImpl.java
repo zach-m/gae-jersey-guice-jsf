@@ -1,8 +1,11 @@
 package com.tectonica.model;
 
+import javax.inject.Singleton;
+
+@Singleton
 public class MyImpl implements MyIntf
 {
-	private MyImpl()
+	public MyImpl()
 	{
 		System.out.println("Created MyImpl()");
 	}
@@ -11,16 +14,5 @@ public class MyImpl implements MyIntf
 	public void foo()
 	{
 		System.out.println("MyImpl.foo()");
-	}
-
-	// /////////////////////////////////////////////////////////////////////////
-
-	private static MyImpl instance = null;
-
-	public static MyImpl getInstance()
-	{
-		if (instance == null)
-			instance = new MyImpl();
-		return instance;
 	}
 }
