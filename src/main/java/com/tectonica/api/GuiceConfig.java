@@ -87,6 +87,7 @@ public class GuiceConfig extends GuiceServletContextListener
 							boolean eligible = (method.getReturnType() == void.class) && (method.getParameterTypes().length == 0);
 							if (eligible)
 							{
+//								method.setAccessible(true);
 								typeEncounter.register(new InjectionListener<I>()
 								{
 									@Override
@@ -98,7 +99,7 @@ public class GuiceConfig extends GuiceServletContextListener
 										}
 										catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e)
 										{
-											e.printStackTrace();
+											throw new RuntimeException(e);
 										}
 									}
 								});
