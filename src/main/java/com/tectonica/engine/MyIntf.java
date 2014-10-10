@@ -1,4 +1,4 @@
-package com.tectonica.model;
+package com.tectonica.engine;
 
 public interface MyIntf
 {

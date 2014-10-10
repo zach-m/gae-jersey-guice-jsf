@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 import com.google.apphosting.api.ApiProxy;
 import com.google.apphosting.api.ApiProxy.Environment;
 import com.google.inject.servlet.RequestScoped;
-import com.tectonica.model.MyIntf;
+import com.tectonica.engine.MyIntf;
 
 @Path("/info")
 @RequestScoped
