@@ -1,4 +1,4 @@
-package com.tectonica.api;
+package com.tectonica.gae;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -23,7 +23,7 @@ public class PostConstructTypeListener implements TypeListener
 	public <I> void hear(final TypeLiteral<I> typeLiteral, TypeEncounter<I> typeEncounter)
 	{
 		Class<? super I> clz = typeLiteral.getRawType();
-		if (packagePrefix != null && !clz.getPackage().getName().startsWith(packagePrefix))
+		if (packagePrefix != null && !clz.getName().startsWith(packagePrefix))
 			return;
 
 		final Method method = getPostConstructMethod(clz);
@@ -67,7 +67,7 @@ public class PostConstructTypeListener implements TypeListener
 			}
 		}
 		Class<?> superClz = clz.getSuperclass();
-		return (superClz == null) ? null : getPostConstructMethod(superClz);
+		return (superClz == Object.class || superClz == null) ? null : getPostConstructMethod(superClz);
 	}
 
 	/**

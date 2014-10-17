@@ -9,7 +9,7 @@
 	<!-- REST Service (Guice + Jersey + Jackson) -->
 
 	<listener>
-		<listener-class>com.tectonica.api.GuiceConfig</listener-class>
+		<listener-class>com.tectonica.api.RestConfig</listener-class>
 	</listener>
 	<filter>
 		<filter-name>REST</filter-name>
