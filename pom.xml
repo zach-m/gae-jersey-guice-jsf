@@ -6,12 +6,12 @@
 
 	<groupId>com.tectonica</groupId>
 	<artifactId>gae-jersey-guice</artifactId>
-	<version>1.0</version>
+	<version>1.1</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<appengine.target.version>1.9.13</appengine.target.version>
+		<appengine.target.version>1.9.14</appengine.target.version>
 		<version.jersey>1.18.1</version.jersey>
 	</properties>
 

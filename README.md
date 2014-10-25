@@ -13,13 +13,13 @@ Even though there are newer generations for these products (Jersey 2.x and Jacks
 
 This template project provides all the required configuration (`web.xml`, Jersey, Jackson, Guice) so that all features from all products work smoothly together. It also provides the code for two typical requirements (easily removable if unneeded):
 
-* CORS filter - to add CORS headers that are mandatory for public REST APIs
+* CORS filter - to add CORS headers that are mandatory in public REST APIs
 * `@PostConstruct` annotation for injectable beans. This allows you the initialize your classes outside the constructor (which is invoked before the dependencies are injected)
 
 The code demonstrates two types of APIs (implemented as JAX-RS annotated classes): 
 
-* `InfoAPI` - Returns an HTML page with the environmental settings, including those of the `HttpRequest` (hence it is @RequestScoped)
-* `DebugAPI` - Demonstrates how to return a Java bean (`MyBean`) as either JSON or XML (this one is a `@Singleton`)
+* `TestAPI` - Demonstrates how to return a Java bean (`MyBean`) as either JSON or XML (this is a `@Singleton` resource)
+* `InfoAPI` - Returns an HTML page with the environmental settings, including those of the `HttpRequest` (hence it is `@RequestScoped`)
 
 The code also demonstrates how to bind and inject an implementation class (`MyImpl`) into an interface placeholder (`MyIntf`).
 
@@ -29,7 +29,7 @@ To create a new project of you own, using this project as a template:
 
 	mvn archetype:generate -Dfilter=com.tectonica:
 	
-And then pick the number corrsponding to `gae-jersey-guice-archetype`
+And then pick the number corresponding to `gae-jersey-guice-archetype`
 
 To build:
 
@@ -42,4 +42,3 @@ To execute locally (on <http://localhost:8080>):
 To deploy to GAE:
 
 	mvn appengine:update
-

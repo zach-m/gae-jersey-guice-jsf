@@ -7,9 +7,9 @@ import javax.ws.rs.Produces;
 
 import com.tectonica.model.MyBean;
 
-@Path("/debug")
+@Path("/test")
 @Singleton
-public class DebugAPI
+public class TestAPI
 {
 	@GET
 	@Path("/xml")
