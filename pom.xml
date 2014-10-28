@@ -13,6 +13,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<appengine.target.version>1.9.14</appengine.target.version>
 		<version.jersey>1.18.1</version.jersey>
+		<version.mojarra>2.2.8-02</version.mojarra>
+		<version.el>2.2</version.el>
 	</properties>
 
 	<prerequisites>
@@ -36,6 +38,18 @@
 			<groupId>com.sun.jersey.contribs</groupId>
 			<artifactId>jersey-guice</artifactId>
 			<version>${version.jersey}</version>
+		</dependency>
+
+		<!-- JSF with Mojarra -->
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.faces</artifactId>
+			<version>${version.mojarra}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.web</groupId>
+			<artifactId>el-impl</artifactId>
+			<version>${version.el}</version>
 		</dependency>
 
 		<!-- From GAE: Compile/runtime dependencies -->

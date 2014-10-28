@@ -20,4 +20,38 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
+	<!-- JSF Servlet (Mojarra) -->
+
+	<servlet>
+		<servlet-name>JSF</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>JSF</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+
+	<!-- JSF Config -->
+
+	<session-config>
+		<!-- session timeout of thirty (30) minutes -->
+		<session-timeout>30</session-timeout>
+	</session-config>
+	<context-param>
+		<!-- disable use of threading for single-threaded environments such as GAE -->
+		<param-name>com.sun.faces.enableThreading</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<!-- In the past, GAE couldn't handle server side state management (JSF default) -->
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+	<context-param>
+		<!-- change to "Production" when you are ready to deploy -->
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+
 </web-app>
