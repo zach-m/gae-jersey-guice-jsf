@@ -49,6 +49,11 @@
 		<param-value>client</param-value>
 	</context-param>
 	<context-param>
+		<!-- enfore usage of the proper EL implementation, listed in pom.xml -->
+		<param-name>com.sun.faces.expressionFactory</param-name>
+		<param-value>com.sun.el.ExpressionFactoryImpl</param-value>
+	</context-param>
+	<context-param>
 		<!-- change to "Production" when you are ready to deploy -->
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
