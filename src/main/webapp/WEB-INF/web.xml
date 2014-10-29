@@ -53,5 +53,10 @@
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
-
+	<context-param>
+	    <!-- see http://www.primefaces.org/themes -->
+		<param-name>primefaces.THEME</param-name>
+		<param-value>redmond</param-value>
+	</context-param>
+	
 </web-app>
