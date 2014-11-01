@@ -42,6 +42,34 @@
 		</tr>
 	</table>
 	<p />
+
+	<script type="text/javascript">
+		function setLink() {
+			var xhr;
+			if (window.XMLHttpRequest) {
+				xhr = new XMLHttpRequest();
+			} else {
+				xhr = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xhr.open("GET", "v1/upload/user/myId", false); // false = not a-sync
+			xhr.send();
+			document.getElementById("uploadForm").action = xhr.responseText;
+		}
+	</script>
+
+	<fieldset>
+		<legend>&nbsp;Upload tester&nbsp;</legend>
+		<form id="uploadForm" onsubmit="setLink();" method="post" enctype="multipart/form-data">
+			<p>
+				Select file 1: <input type="file" name="file1" />
+			</p>
+			<p>
+				Select file 2: <input type="file" name="file2" />
+			</p>
+			<input type="submit" value="Upload" />
+		</form>
+	</fieldset>
+
 	<hr />
 
 	<p align="right">

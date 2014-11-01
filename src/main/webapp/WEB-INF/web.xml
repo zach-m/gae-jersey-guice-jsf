@@ -19,6 +19,17 @@
 		<filter-name>REST</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<!-- Blobstore Uploads/Downloads -->
+
+	<servlet>
+		<servlet-name>Blobstore</servlet-name>
+		<servlet-class>com.tectonica.gae.BlobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Blobstore</servlet-name>
+		<url-pattern>/blob</url-pattern>
+	</servlet-mapping>
 
 	<!-- JSF Servlet (PrimeFaces) -->
 
