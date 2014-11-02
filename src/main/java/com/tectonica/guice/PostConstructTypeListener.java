@@ -1,4 +1,4 @@
-package com.tectonica.gae;
+package com.tectonica.guice;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
