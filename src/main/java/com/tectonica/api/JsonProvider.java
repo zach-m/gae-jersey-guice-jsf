@@ -6,7 +6,7 @@ import javax.ws.rs.ext.Provider;
 
 import org.codehaus.jackson.map.ObjectMapper;
 
-import com.tectonica.gae.Jackson1;
+import com.tectonica.util.Jackson1;
 
 /**
  * Overrides the default JSON serialization configuration provided by Jackson.<br/>

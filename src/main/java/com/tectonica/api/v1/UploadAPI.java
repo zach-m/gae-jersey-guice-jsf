@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 
 import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
-import com.tectonica.gae.BlobServlet;
+import com.tectonica.gae.GaeBlobServlet;
 
 @Path("/upload")
 @Singleton
@@ -58,6 +58,6 @@ public class UploadAPI
 	public String generateLink(@PathParam("uid") String uid)
 	{
 		// TODO: check if uid is allowed to upload stuff..
-		return blobSvc.createUploadUrl(BlobServlet.BLOB_URI);
+		return blobSvc.createUploadUrl(GaeBlobServlet.BLOB_URI);
 	}
 }
