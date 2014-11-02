@@ -67,7 +67,7 @@
 	<context-param>
 	    <!-- allow dependency-injection into ManagedBeans -->
 		<param-name>com.sun.faces.injectionProvider</param-name>
-		<param-value>com.tectonica.gae.GuiceJsfInjector</param-value>
+		<param-value>com.tectonica.guice.GuiceJsfInjector</param-value>
 	</context-param>
 		<context-param>
 		<!-- change to "Production" when you are ready to deploy -->

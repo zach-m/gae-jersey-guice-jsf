@@ -1,4 +1,4 @@
-package com.tectonica.gae;
+package com.tectonica.guice;
 
 import javax.faces.bean.ManagedBean;
 
@@ -8,7 +8,7 @@ import com.sun.faces.vendor.WebContainerInjectionProvider;
 /**
  * An optional injector for Mojarra-based applications where dependency injection is required into the {@code @ManagedBean}s. It extends
  * {@link WebContainerInjectionProvider}, which normally handles invocations of {@code @PostConstruct} and {@code @PreDestroy}, by also
- * adding dependency-injection for {@code @ManagedBean}s using the Guice injector created in {@link GuiceRestListener}. This creator, by the
+ * adding dependency-injection for {@code @ManagedBean}s using the Guice injector created in {@link GuiceListener}. This creator, by the
  * way, also handles {@code @PostConstruct} methods, so we make sure to avoid double invocation here.
  * <p>
  * To use, add the following paragraph to {@code web.xml} alongside your other JSF configuration:
@@ -16,11 +16,11 @@ import com.sun.faces.vendor.WebContainerInjectionProvider;
  * <pre>
  * &lt;context-param&gt;
  *    &lt;param-name&gt;com.sun.faces.injectionProvider&lt;/param-name&gt;
- *    &lt;param-value&gt;com.tectonica.gae.GuiceJsfInjector&lt;/param-value&gt;
+ *    &lt;param-value&gt;com.tectonica.guice.GuiceJsfInjector&lt;/param-value&gt;
  * &lt;/context-param&gt;
  * </pre>
  * 
- * <b>NOTE:</b> make sure your {@link GuiceRestListener}-subclass is an active listener in the {@code web.xml}, or NullPointerExceptions
+ * <b>NOTE:</b> make sure your {@link GuiceListener}-subclass is an active listener in the {@code web.xml}, or NullPointerExceptions
  * will be thrown
  * <p>
  * 
@@ -32,7 +32,7 @@ public class GuiceJsfInjector extends WebContainerInjectionProvider
 	public void inject(Object managedBean) throws InjectionProviderException
 	{
 		if (isToBeInjectedByGuice(managedBean))
-			GuiceRestListener.injectMembers(managedBean);
+			GuiceListener.injectMembers(managedBean);
 	}
 
 	/**
