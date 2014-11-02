@@ -24,7 +24,7 @@
 
 	<servlet>
 		<servlet-name>Blobstore</servlet-name>
-		<servlet-class>com.tectonica.gae.BlobServlet</servlet-class>
+		<servlet-class>com.tectonica.gae.GaeBlobServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Blobstore</servlet-name>
