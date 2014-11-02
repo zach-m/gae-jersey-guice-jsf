@@ -13,7 +13,40 @@ import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 /**
- * Servlet-listener for intercepting REST requests and pass them through Guice before Jersey
+ * Servlet-listener for intercepting REST requests and pass them through Guice before Jersey. To use it you need to extend this class and
+ * generate a constructor that would offer your own subclass of {@link GuiceRestModule}, reflect your configuration. At the minimum, this
+ * subclass needs to implement {@link GuiceRestModule#getRootPackage()} or {@link GuiceRestModule#bindJaxrsResources()}. For example:
+ * 
+ * <pre>
+ * public class RestConfig extends GuiceRestListener
+ * {
+ *    public RestConfig()
+ *    {
+ *       super(new GuiceRestModule()
+ *       {
+ *          {@literal @}Override
+ *          protected String getServingUrl()
+ *          {
+ *             return ...;
+ *          }
+ * 
+ *          {@literal @}Override
+ *          protected String getRootPackage()
+ *          {
+ *             return ...;
+ *          }
+ *       });
+ *    }
+ * }
+ * </pre>
+ * 
+ * Once implemented, register your listener with {@code web.xml}:
+ * 
+ * <pre>
+ * &lt;listener&gt;
+ *    &lt;listener-class&gt;com.example.api.RestConfig&lt;/listener-class&gt;
+ * &lt;/listener&gt;
+ * </pre>
  * 
  * @author Zach Melamed
  */
@@ -22,12 +55,7 @@ public class GuiceRestListener extends GuiceServletContextListener
 	protected final GuiceRestModule module;
 	protected static Injector injector;
 
-	public GuiceRestListener()
-	{
-		module = new GuiceRestModule();
-	}
-
-	public GuiceRestListener(GuiceRestModule customModule)
+	protected GuiceRestListener(GuiceRestModule customModule)
 	{
 		module = customModule;
 	}
@@ -47,6 +75,14 @@ public class GuiceRestListener extends GuiceServletContextListener
 		return injector.getInstance(type);
 	}
 
+	/**
+	 * given an injectable instance, injects its dependencies
+	 */
+	public static void injectMembers(Object instance)
+	{
+		injector.injectMembers(instance);
+	}
+
 	public static class GuiceRestModule extends ServletModule
 	{
 		@Override
@@ -57,6 +93,7 @@ public class GuiceRestListener extends GuiceServletContextListener
 			bindJaxrsResources();
 
 			// add support for the @PostConstruct annotation for Guice-injected objects
+			// if you choose to remove it, also modify GuiceJsfInjector.invokePostConstruct()
 			bindListener(Matchers.any(), new PostConstructTypeListener(null));
 
 			// configure Jersey: use Jackson + CORS-filter
