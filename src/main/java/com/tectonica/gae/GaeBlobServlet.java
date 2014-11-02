@@ -21,15 +21,16 @@ import com.google.appengine.api.blobstore.FileInfo;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
 import com.google.appengine.api.images.ServingUrlOptions;
+import com.tectonica.util.Jackson1;
 
 /**
- * A generic servlet, implementing GAE's blobstore protocol to upload and download static content. To use it, you need an entry in the
+ * A generic servlet, implementing GAE's blobstore protocol to upload and download static content. To use it, you need an entry in your
  * {@code web.xml} file:
  * 
  * <pre>
  * &lt;servlet&gt;
  *    &lt;servlet-name&gt;Blobstore&lt;/servlet-name&gt;
- *    &lt;servlet-class&gt;com.tectonica.gae.BlobServlet&lt;/servlet-class&gt;
+ *    &lt;servlet-class&gt;com.tectonica.gae.GaeBlobServlet&lt;/servlet-class&gt;
  * &lt;/servlet&gt;
  * &lt;servlet-mapping&gt;
  *    &lt;servlet-name&gt;Blobstore&lt;/servlet-name&gt;
@@ -40,7 +41,7 @@ import com.google.appengine.api.images.ServingUrlOptions;
  * Additionally, you need to create a API that would generate an upload link. This API should check permissions etc., and ultimately return:
  * 
  * <pre>
- * return BlobstoreServiceFactory.getBlobstoreService().createUploadUrl(BlobServlet.BLOB_URI);
+ * return BlobstoreServiceFactory.getBlobstoreService().createUploadUrl(GaeBlobServlet.BLOB_URI);
  * </pre>
  * 
  * The link returned by the above code will take care of the actual upload and storage, and then forward the request to this servlet for
@@ -48,12 +49,12 @@ import com.google.appengine.api.images.ServingUrlOptions;
  * 
  * @author Zach Melamed
  */
-public class BlobServlet extends HttpServlet
+public class GaeBlobServlet extends HttpServlet
 {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * taken from the {@code web.xml} servlet mapping for {@link BlobServlet}
+	 * taken from the {@code web.xml} servlet mapping for {@link GaeBlobServlet}
 	 */
 	public static final String BLOB_URI = "/blob";
 
