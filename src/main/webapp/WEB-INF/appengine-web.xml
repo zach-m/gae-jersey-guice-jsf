@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
-
-	<application>gae-jersey-guice</application>
-	<version>demo</version>
-
+    
+	<application>gae-jersey-guice-jsf</application>
+	<version>jsf</version>
+	
 	<threadsafe>true</threadsafe>
 
 	<system-properties>
